@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+
+void bsearch(int arr[],int low, int high, int s_key, int in)
+{
+	in=in+1;
+	cout<<"ITERATION NUMBER "<<in<<" "<<s_key<<endl;
+	
+	if (low>high)
+  {
+		cout<<"Error!";
+	}
+	else
+  {
+		int mid=(low+high)/2;
+		if(arr[mid]==s_key)
+      cout<<arr[mid]<<"Required Entry found at the Index:"<<mid<<endl;
+		else if(s_key<arr[mid])
+      bsearch(arr,low,mid,s_key,in);
+		else
+      bsearch(arr,mid+1,high,s_key,in);
+	}
+}
+
+int main()
+{ 
+  int key;
+	while(key!=-1)
+  {
+	  int n,i,j=3,index;
+	  cout<<"enter the number of elements"<<endl;
+	  cin>>n;
+	  int arr[n];
+	  for(i=0;i<n;i++)
+    {
+		  arr[i]=i+j;
+		  cout<<"the value at index "<<i<<" is "<<arr[i]<<endl;
+	  }
+	  cout<<"enter the number you want to search";
+	  cin>>key;
+	  int itr=0;
+	  bsearch(arr,0,n-1,key,itr);
+	  return 0;
+  }
+}
